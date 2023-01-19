@@ -666,7 +666,21 @@ void CpuWidget::onSearchButtonClicked()
 
 	if (searchType < 4)
 	{
-		searchValue.toLongLong(&ok, searchHex ? 16 : 10);
+		if (searchHex)
+		{
+			searchValue.toULongLong(&ok, 16);
+		}
+		else
+		{
+			if (value.startsWith("-"))
+			{
+				searchValue.toLongLong(&ok, 10);
+			}
+			else
+			{
+				searchValue.toULongLong(&ok, 10);
+			}
+		}
 	}
 	else if (searchType != 6)
 	{
