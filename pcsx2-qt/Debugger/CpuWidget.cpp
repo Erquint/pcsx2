@@ -672,7 +672,7 @@ void CpuWidget::onSearchButtonClicked()
 		}
 		else
 		{
-			if (value.startsWith("-"))
+			if (searchValue.startsWith("-"))
 			{
 				searchValue.toLongLong(&ok, 10);
 			}
