@@ -617,7 +617,7 @@ std::vector<u32> startWorker(DebugInterface* cpu, int type, u32 start, u32 end, 
 		case 2:
 			return isSigned ? searchWorker<s32>(cpu, start, end, value.toInt(nullptr, base)) : searchWorker<u32>(cpu, start, end, value.toUInt(nullptr, base));
 		case 3:
-			return isSigned ? searchWorker<s64>(cpu, start, end, value.toLong(nullptr, base)) : searchWorker<s64>(cpu, start, end, value.toULongLong(nullptr, base));
+			return isSigned ? searchWorker<s64>(cpu, start, end, value.toLong(nullptr, base)) : searchWorker<u64>(cpu, start, end, value.toULongLong(nullptr, base));
 		case 4:
 			return searchWorker<float>(cpu, start, end, value.toFloat());
 		case 5:
@@ -666,7 +666,7 @@ void CpuWidget::onSearchButtonClicked()
 
 	if (searchType < 4)
 	{
-		searchValue.toLong(&ok, searchHex ? 16 : 10);
+		searchValue.toLongLong(&ok, searchHex ? 16 : 10);
 	}
 	else if (searchType != 6)
 	{
